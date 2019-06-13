@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>二维码生成器</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+  <script type="text/javascript" src="../../assets/js/exif.js"></script>
+  <script type="text/javascript" src="../../assets/js/base64image.js"></script>
+</head>
+<style>
+  .home-btn {
+    width: 100px;
+    height: 30px;
+    border: 1px solid #7ba3ec;
+    margin: 60px auto;
+    line-height: 30px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #476edc;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    float: left;
+    margin-right: 10px;
+    padding: 2px 8px;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <input type="file" style="display: none" onchange="fileUp(this)" id="file-up">
+    <input type="button" value="点我上传图片" onclick="document.getElementById('file-up').click();"/>
+    <p>base64直接查看图片的src进行copy即可！(支持连续上传转换)</p>
+    <div class="home-btn" @click="goHome">回到首页</div>
+    <div id='image-list'></div>
+
+
+  </div>
+</body>
+
+</html>
+<script>
+  var fileUp = function (me) {
+      base64Image({
+          width:750,                             /*【选填】宽度默认750，如果图片尺寸大于该宽度，图片将被设置为该宽度*/
+          ratio:0.75,                            /*【选填】压缩率默认0.75 */
+          file: me,                              /*【必填】对应的上传元素 */
+          callback: function (imageUrl) {        /*【必填】处理成功后的回调函数 */
+              /*imageUrl为得到的图片base64数据，这里可以进行上传到服务器或者其他逻辑操作 */
+              var img = new Image();
+              img.src = imageUrl;
+              document.getElementById("image-list").append(img);
+          },
+      });
+  };
+</script>
+
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+    },
+    methods: {
+      goHome() {
+        window.location.href = 'index.html';
+      },
+    }
+  })
+</script>

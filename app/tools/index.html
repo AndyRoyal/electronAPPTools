@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>tools集合</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+<style>
+  .line-box {
+    width: 95%;
+    float: left;
+    border: 1px solid #CCC;
+    padding: 14px;
+    margin: 0 0px 15px;
+    border-radius: 5px;
+    background-color: #F9F9F9;
+    font-size: 14px;
+    overflow: hidden;
+  }
+
+  .line-box:hover {
+    box-shadow: 3px 3px 15px;
+  }
+</style>
+
+<body>
+  <div id="app" class="logo-box">
+    <div class="wrapper">
+      <h5 class="title">tools集合</h5>
+      <div class="line-box" @click="goQRCode">
+        <span class="left">二维码生成器</span>
+      </div>
+      <div class="line-box" @click="goBase64">
+        <span class="left">图片转base64</span>
+      </div>
+      <!--<div class="line-box" @click="goImgCompress">
+          <span class="left">图片压缩</span>
+        </div>-->
+
+    </div>
+
+
+  </div>
+</body>
+
+</html>
+
+
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      QRCodeData: {
+        url: "https://www.jd.com",
+        pic: "http://img10.360buyimg.com/uba/jfs/t1/15356/35/6451/3022/5c516f20E38acb46e/57d8ee92c25107f7.png"
+      }
+    },
+    methods: {
+      goImgCompress(){
+        window.location.href = 'html5ImgCompress.html';
+      },
+      goQRCode() {
+        window.location.href = 'QRCode.html';
+      },
+      goBase64() {
+        window.location.href = 'base64.html';
+      },
+    },
+    computed: {
+
+    },
+    created() {
+
+
+    }
+  })
+</script>

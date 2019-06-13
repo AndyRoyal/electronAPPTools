@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>二维码生成器</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+  <script type="text/javascript" src="../../assets/nutui/nutui.min.js"></script>
+  <script src="../../assets/js/qr-code-with-logo.browser.min.js"></script>
+  <link rel="stylesheet" href="../../assets/nutui/nutui.min.css">
+</head>
+<style>
+  .create-btn, .home-btn {
+    width: 100px;
+    height: 30px;
+    border: 1px solid #7ba3ec;
+    margin: 60px auto;
+    line-height: 30px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #476edc;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    float: left;
+    margin-right: 10px;
+    padding: 2px 8px;
+  }
+
+  .wrapper {
+    padding-left: 15px;
+    font-family: "PingFangSC-Regular", PingHei, Lucida Grande, Lucida Sans Unicode,
+      STHeiti, Helvetica, Arial, Verdana, "sans-serif", PingHei-light, SimHei,
+      Droid Sans;
+  }
+
+  .title {
+    margin: 30px 0;
+    color: #333;
+    font-size: 19px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .mt10 {
+    margin-top: 10px;
+  }
+
+  .line {
+    width: 90%;
+    height: 40px;
+    line-height: 0px;
+  }
+
+  .left {
+    width: 21%;
+    text-align: right;
+    display: inline-block;
+    font-size: 14px;
+    color: #464343;
+  }
+
+  .right-box {
+    width: 70%;
+    margin-left: 90px;
+    margin-top: -10px;
+
+
+  }
+
+  .right {
+    width: 260px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid #c8cccf;
+    color: #6a6f77;
+    padding-left: 7px;
+  }
+
+  .check-line {
+    margin-bottom: 10px;
+  }
+</style>
+
+<body>
+  <div id="app" class="logo-box">
+    <div class="wrapper">
+      <h5 class="title">二维码生成器</h5>
+      <div class="line">
+        <span class="left">输入链接</span>
+        <input class="right" v-model="QRCodeData.url">
+      </div>
+      <div class="line">
+        <span class="left">输入logo图片地址</span>
+        <input class="right" v-model="QRCodeData.pic">
+      </div>
+      <div class="create-btn" @click="createdFn">点击生成二维码</div>
+      <div class="home-btn" @click="goHome">回到首页</div>
+
+      <canvas id="canvas"></canvas>
+    </div>
+
+
+  </div>
+</body>
+
+</html>
+
+
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      QRCodeData: {
+        url: "https://www.jd.com",
+        pic:"http://img10.360buyimg.com/uba/jfs/t1/15356/35/6451/3022/5c516f20E38acb46e/57d8ee92c25107f7.png"
+      }
+    },
+    methods: {
+      goHome() {
+        window.location.href = 'index.html';
+      },
+      createdFn() {
+        let _t = this;
+        QrCodeWithLogo.toCanvas({
+          canvas: document.getElementById('canvas'),
+          content: _t.QRCodeData.url,
+          width: 380,
+          logo: {
+            src: _t.QRCodeData.pic,
+          }
+        })
+      },
+      handleBackHome () {
+            window.location.href = 'index.html';
+        }
+    },
+    computed: {
+
+    },
+    created() {
+
+
+    }
+  })
+</script>

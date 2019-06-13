@@ -1,0 +1,54 @@
+{
+  "name": "iview-cli",
+  "version": "2.1.0",
+  "title": "iView Cli",
+  "description": "Quick way to create an iView project.",
+  "homepage": "http://www.iviewui.com",
+  "keywords": [
+    "iview",
+    "vue",
+    "vue.js",
+    "cli"
+  ],
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "build:linux32": "electron-packager ./ iView --platform=linux --arch=ia32 ~/Desktop/iView --electronVersion=1.4.15 --overwrite --icon=./assets/img/iView.icns",
+    "build:linux64": "electron-packager ./ iView --platform=linux --arch=x64 ~/Desktop/iView --electronVersion=1.4.15 --overwrite --icon=./assets/img/iView.icns",
+    "build:mac": "electron-packager ./ iView --platform=darwin --arch=x64 ~/Desktop/iView --electronVersion=1.7.6 --overwrite --icon=./assets/img/iView.icns",
+    "build:win32": "electron-packager ./ iView --platform=win32 --arch=ia32 ~/Desktop/iView --electronVersion=1.4.15 --overwrite --icon=./assets/img/logo.icns",
+    "build:win64": "electron-packager ./app --platform=win32 --arch=x64 ~/Desktop/app --electronVersion=1.4.15 --overwrite --icon=./assets/img/logo.icns",
+    "appdmg": "appdmg appdmg.json ~/Desktop/iView.dmg"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Aresn",
+  "license": "MIT",
+  "bugs": {
+  },
+  "dependencies": {
+    "ajv": "^5.2.2",
+    "ajv-keywords": "^2.1.0",
+    "axios": "^0.15.3",
+    "electron-connect": "^0.6.2",
+    "iview": "^2.4.0",
+    "js-beautify": "^1.7.3",
+    "vue": "^2.4.4",
+    "vue-i18n": "^5.0.3"
+  },
+  "devDependencies": {
+    "electron": "^1.7.9",
+    "electron-packager": "^8.7.2",
+    "electron-prebuilt": "^1.4.13",
+    "gulp": "^3.9.1",
+    "vue-i18n": "^5.0.3"
+  },
+  "update": {
+    "version": 4,
+    "mac": "",
+    "windows": "",
+    "desc": ""
+  }
+}
